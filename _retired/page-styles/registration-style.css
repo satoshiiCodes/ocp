@@ -1,0 +1,43 @@
+/* registration-style.css
+ * Extracted from registration.php - inline <style> block(s).
+ */
+
+            .password-toggle {
+                cursor: pointer;
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                transform: translateY(-50%);
+                z-index: 5;
+            }
+            .form-floating.position-relative {
+                position: relative;
+            }
+            .action-buttons {
+                display: flex;
+                gap: 5px;
+            }
+            .action-btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem;
+            }
+            .modal-content {
+                border-radius: 0.5rem;
+            }
+            .search-container {
+                margin-bottom: 1rem;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+            }
+            .table-responsive {
+                max-height: 500px;
+                overflow-y: auto;
+            }
+            .dataTables_wrapper .dataTables_length,
+            .dataTables_wrapper .dataTables_filter,
+            .dataTables_wrapper .dataTables_info,
+            .dataTables_wrapper .dataTables_paginate {
+                margin: 10px 0;
+                padding: 10px;
+            }

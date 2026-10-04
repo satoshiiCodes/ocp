@@ -1,0 +1,12 @@
+12:42:54 TOP action='forward_to_warehouse' pr_id_get='266' session_user=1 defined_user='1' method=POST
+12:42:54 ACTIONS bootstrap entry: isset=false is_array=false value=null pr_id='266'
+12:42:54 AT-DISPATCH action='forward_to_warehouse' current_stage={"stage":"requestor","status":"pending"} fresh=false fresh_old=false allrows=[] bootstrap_sql=NULL
+12:42:54 TOP action='approve_warehouse' pr_id_get='266' session_user=10 defined_user='10' method=POST
+12:42:54 ACTIONS bootstrap entry: isset=false is_array=false value=null pr_id='266'
+12:42:54 AT-DISPATCH action='approve_warehouse' current_stage={"stage":"warehouse","status":"pending"} fresh="warehouse" fresh_old="warehouse" allrows=[{"id":1288,"stage":"warehouse","created_at":"2026-10-01 20:42:54"}] bootstrap_sql=NULL
+12:42:54 TOP action='approve_purchasing' pr_id_get='266' session_user=7 defined_user='7' method=POST
+12:42:54 ACTIONS bootstrap entry: isset=false is_array=false value=null pr_id='266'
+12:42:54 AT-DISPATCH action='approve_purchasing' current_stage={"stage":"warehouse","status":"pending"} fresh="purchasing" fresh_old="warehouse" allrows=[{"id":1289,"stage":"purchasing","created_at":"2026-10-01 20:42:54"},{"id":1288,"stage":"warehouse","created_at":"2026-10-01 20:42:54"}] bootstrap_sql=NULL
+12:43:18 TOP action='process_withdrawal_slip' pr_id_get='239' session_user=10 defined_user='10' method=POST
+12:43:18 ACTIONS bootstrap entry: isset=false is_array=false value=null pr_id='239'
+12:43:18 AT-DISPATCH action='process_withdrawal_slip' current_stage={"stage":"warehouse_releasing","status":"pending"} fresh="warehouse_releasing" fresh_old="warehouse_releasing" allrows=[{"id":1287,"stage":"warehouse_releasing","created_at":"2026-10-01 20:42:34"},{"id":1282,"stage":"approver","created_at":"2026-10-01 20:41:39"},{"id":1230,"stage":"purchasing","created_at":"2026-10-01 18:00:04"},{"id":1229,"stage":"purchasing","created_at":"2026-10-01 17:59:17"},{"id":1225,"stage":"warehouse","created_at":"2026-10-01 14:05:06"}] bootstrap_sql=NULL

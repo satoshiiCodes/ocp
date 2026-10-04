@@ -1,0 +1,35 @@
+{
+  "page": "issue_materials",
+  "guard": "OCP_ISSUE_MATERIALS_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectLast": "page_data\\.php" },
+    { "block": [
+      "// $swal_data and the message variables carry what the actions file wants shown.",
+      "// They are created here, before the actions run, so the markup below always finds",
+      "// them defined.",
+      "$message = '';",
+      "$message_type = ''; // success or danger",
+      "$swal_data = []; // For SweetAlert2 data",
+      "",
+      "// All of this page's actions live in one file: issuing materials to an employee.",
+      "// The form posts back to this page, so it is pulled in before anything is read or",
+      "// rendered.",
+      "if (!defined('OCP_ISSUE_MATERIALS_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/issue_materials-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. swal_data is only taken",
+      "// when the endpoint set one, so a message from the actions file is not wiped out.",
+      "$ocp_endpoint = require __DIR__ . '/api/issue_materials-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    if ($ocp_key === 'swal_data' && empty($ocp_value)) {",
+      "        continue;",
+      "    }",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [331, 711], "expectFirst": "^\\?>$" }
+  ]
+}

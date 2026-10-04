@@ -1,0 +1,207 @@
+/* index-style.css
+ * Extracted from index.php - inline <style> block(s).
+ */
+
+    :root {
+      --primary-color: #2c3e50;
+      --accent-color: #3498db;
+      --light-color: #ecf0f1;
+      --dark-color: #1a2530;
+      --success-color: #2ecc71;
+      --error-color: #e74c3c;
+      --glass-bg: rgba(255, 255, 255, 0.1);
+      --glass-border: rgba(255, 255, 255, 0.2);
+      --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      position: relative;
+      overflow-x: hidden;
+    }
+    
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      /* Relative to this stylesheet (assets/css/), so it resolves to
+       * assets/images/background/back.jpg and keeps working wherever the app is served from.
+       * It used to read url('img/background/back.jpg'), which points at assets/css/img/... and
+       * does not exist, so the login page had no background. */
+      background: url('../images/background/back.jpg') no-repeat center center;
+      background-size: cover;
+      filter: brightness(0.4);
+      z-index: -1;
+    }
+    
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      margin: 0 auto;
+    }
+    
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      box-shadow: var(--glass-shadow);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+    }
+    
+    .card-header {
+      background: rgba(255, 255, 255, 0.15);
+      border-bottom: 1px solid var(--glass-border);
+      padding: 25px 20px;
+    }
+    
+    .logo-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .logo-img {
+      max-width: 150px;
+      height: auto;
+    }
+    
+    .card-body {
+      padding: 30px;
+    }
+    
+    .form-control {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: var(--light-color);
+      padding: 12px 15px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-control:focus {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: rgba(255, 255, 255, 0.4);
+      box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1);
+      color: var(--light-color);
+    }
+    
+    .form-control::placeholder {
+      color: rgba(255, 255, 255, 0.6);
+    }
+    
+    .form-label {
+      color: var(--light-color);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .btn-login {
+      background: linear-gradient(135deg, var(--accent-color), #2980b9);
+      border: none;
+      border-radius: 8px;
+      color: white;
+      font-weight: 600;
+      padding: 12px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(52, 152, 219, 0.3);
+    }
+    
+    .btn-login:hover {
+      background: linear-gradient(135deg, #2980b9, var(--accent-color));
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    }
+    
+    .form-check-input:checked {
+      background-color: var(--accent-color);
+      border-color: var(--accent-color);
+    }
+    
+    .form-check-label {
+      color: var(--light-color);
+    }
+    
+    .error-message {
+      background: rgba(231, 76, 60, 0.2);
+      border: 1px solid rgba(231, 76, 60, 0.4);
+      border-radius: 8px;
+      color: #ff9e9e;
+      font-size: 14px;
+      padding: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .success-message {
+      background: rgba(46, 204, 113, 0.2);
+      border: 1px solid rgba(46, 204, 113, 0.4);
+      border-radius: 8px;
+      color: #a3ffc6;
+      font-size: 14px;
+      padding: 12px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    
+    .copyright {
+      text-align: center;
+      color: rgba(255, 255, 255, 0.7);
+      margin-top: 30px;
+      font-size: 14px;
+    }
+    
+    .floating-elements {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      overflow: hidden;
+      z-index: -1;
+    }
+    
+    .floating-element {
+      position: absolute;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 50%;
+      animation: float 15s infinite linear;
+    }
+    
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-1000px) rotate(720deg);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+      .card-body {
+        padding: 25px 20px;
+      }
+      
+      .logo-img {
+        max-width: 150px;
+      }
+    }

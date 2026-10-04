@@ -1,0 +1,38 @@
+{
+  "_comment": [
+    "Files deliberately folded into a page's single actions or endpoint file during",
+    "the one-file-per-page restructure. Each entry records where the name used to",
+    "point and where that handling lives now, so _verify/preservation.mjs can tell an",
+    "intended rename apart from a lost action.",
+    "",
+    "An entry with op+table is an action: the checker requires the target file to",
+    "actually perform that operation on that table. An entry with kind 'endpoint' is",
+    "a read that moved into a per-page endpoint: the checker requires the target to",
+    "exist and to carry the query the old file made."
+  ],
+  "folded": [
+    { "from": "action/delete_expense_type.php", "to": "actions/expenses_type-actions.php", "op": "DELETE FROM", "table": "expenses_type" },
+    { "from": "actions/delete_expense_type.php", "to": "actions/expenses_type-actions.php", "op": "DELETE FROM", "table": "expenses_type" },
+    { "from": "action/update_expense_type.php", "to": "actions/expenses_type-actions.php", "op": "UPDATE", "table": "expenses_type" },
+    { "from": "actions/update_expense_type.php", "to": "actions/expenses_type-actions.php", "op": "UPDATE", "table": "expenses_type" },
+
+    { "from": "action/delete_item.php", "to": "actions/item_names-actions.php", "op": "DELETE FROM", "table": "item_names" },
+    { "from": "actions/delete_item.php", "to": "actions/item_names-actions.php", "op": "DELETE FROM", "table": "item_names" },
+    { "from": "action/update_item.php", "to": "actions/item_names-actions.php", "op": "UPDATE", "table": "item_names" },
+    { "from": "actions/update_item.php", "to": "actions/item_names-actions.php", "op": "UPDATE", "table": "item_names" },
+
+    { "from": "action/get_pr_details.php", "to": "api/purchase_request-endpoint.php", "kind": "endpoint", "read": "FROM purchase_requests pr" },
+    { "from": "api/get_pr_details.php", "to": "api/purchase_request-endpoint.php", "kind": "endpoint", "read": "FROM purchase_requests pr" },
+
+    { "from": "action/get_spare_parts_pr_details.php", "to": "api/purchase_request_spare_parts-endpoint.php", "kind": "endpoint", "read": "FROM spare_parts_pr pr" },
+    { "from": "api/get_spare_parts_pr_details.php", "to": "api/purchase_request_spare_parts-endpoint.php", "kind": "endpoint", "read": "FROM spare_parts_pr pr" },
+    { "from": "action/generate_document_number.php", "to": "actions/purchase_request_spare_parts-actions.php", "kind": "endpoint", "read": "FROM spare_parts_pr WHERE YEAR(created_at)" },
+    { "from": "actions/generate_document_number.php", "to": "actions/purchase_request_spare_parts-actions.php", "kind": "endpoint", "read": "FROM spare_parts_pr WHERE YEAR(created_at)" },
+
+    { "from": "action/get_movement_details.php", "to": "api/inventory-endpoint.php", "kind": "endpoint", "read": "FROM stock_movements sm" },
+    { "from": "api/get_movement_details.php", "to": "api/inventory-endpoint.php", "kind": "endpoint", "read": "FROM stock_movements sm" },
+
+    { "from": "action/get_gasoline_po_details.php", "to": "api/gasoline_purchase_order-endpoint.php", "kind": "endpoint", "read": "FROM gasoline_purchase_orders po" },
+    { "from": "api/get_gasoline_po_details.php", "to": "api/gasoline_purchase_order-endpoint.php", "kind": "endpoint", "read": "FROM gasoline_purchase_orders po" }
+  ]
+}

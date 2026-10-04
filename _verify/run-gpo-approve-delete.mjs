@@ -1,0 +1,14 @@
+﻿import { spawn, execFileSync } from "node:child_process";
+import path from "node:path";
+const ROOT = "E:\\laragon\\www\\OCP";
+const php = (f, a = []) => execFileSync("php", [path.join(ROOT, "_verify", f), ...a], { encoding: "utf8" }).replace(/^\uFEFF/, "");
+const rows = (s) => php("rows.php", [s]).split("\n").map(l => l.trim()).filter(l => l.startsWith("{")).map(l => JSON.parse(l));
+const ceo = rows("SELECT id FROM users WHERE accounttype = 'Admin' AND position = 'CEO' LIMIT 1")[0];
+const supplier = rows("SELECT id FROM gasoline_suppliers LIMIT 1")[0];
+const sid = execFileSync("php", [path.join(ROOT, "_verify", "make-session.php"), String(ceo.id)], { encoding: "utf8" }).trim();
+const PORT = "8542";
+const app = spawn("php", ["-S", `127.0.0.1:${PORT}`, "-t", "."], { cwd: ROOT, stdio: "ignore" });
+await new Promise(r => setTimeout(r, 2000));
+const out = execFileSync("php", [path.join(ROOT, "_verify", "check-gpo-approve-delete.php"), String(ceo.id), String(supplier.id), PORT, sid], { encoding: "utf8" });
+console.log(out.split("\n").map(l => l.trimEnd()).join("\n"));
+app.kill();

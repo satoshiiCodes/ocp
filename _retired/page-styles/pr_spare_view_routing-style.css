@@ -1,0 +1,353 @@
+/* pr_spare_view_routing-style.css
+ * Extracted from pr_spare_view_routing.php - inline <style> block(s).
+ */
+
+        .routing-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .routing-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #dee2e6;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #6c757d;
+            border: 2px solid white;
+        }
+        .timeline-item.current::before {
+            background-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+        }
+        .timeline-item.completed::before {
+            background-color: #198754;
+        }
+        .action-buttons .btn {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .item-row {
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
+        }
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        .po-item-row {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .table-responsive {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .supplier-select {
+            min-width: 200px;
+        }
+        .received-alert {
+            background-color: #d1e7dd;
+            border-left: 4px solid #198754;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .receiving-status {
+            font-weight: bold;
+        }
+        .status-pending {
+            color: #6c757d;
+        }
+        .status-partial {
+            color: #fd7e14;
+        }
+        .status-delivered {
+            color: #198754;
+        }
+        .view-only {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
+        }
+        .disabled-button {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .routing-actions-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .routing-actions-buttons .btn {
+            flex: 1;
+        }
+        .single-action-button {
+            margin-top: 15px;
+        }
+        /* Horizontal timeline styles */
+        .horizontal-timeline {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px 0;
+            position: relative;
+            margin-bottom: 20px;
+            width: 100%;
+        }
+        .horizontal-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #dee2e6;
+            z-index: 1;
+        }
+        .timeline-stage {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 0 5px;
+            z-index: 2;
+            min-width: 0;
+        }
+        .timeline-stage.completed .timeline-icon {
+            background-color: #198754;
+            border-color: #198754;
+            color: white;
+        }
+        .timeline-stage.current .timeline-icon {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+        }
+        .timeline-stage.pending .timeline-icon {
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+            color: #6c757d;
+        }
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 10px;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s ease;
+        }
+        .timeline-label {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            line-height: 1.2;
+            height: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .timeline-status {
+            font-size: 12px;
+            color: #6c757d;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            height: 20px;
+        }
+        .timeline-stage.completed .timeline-status {
+            color: #198754;
+            font-weight: 600;
+        }
+        .timeline-stage.current .timeline-status {
+            color: #0d6efd;
+            font-weight: 600;
+        }
+        .final-status {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .final-status.completed {
+            background-color: #d1e7dd;
+            border-left: 4px solid #198754;
+        }
+        .final-status.rejected {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        /* Icon colors for completed stages */
+        .timeline-stage.completed .fa-user {
+            color: white;
+        }
+        .timeline-stage.completed .fa-warehouse {
+            color: white;
+        }
+        .timeline-stage.completed .fa-shopping-cart {
+            color: white;
+        }
+        .timeline-stage.completed .fa-user-check {
+            color: white;
+        }
+        .timeline-stage.completed .fa-truck-loading {
+            color: white;
+        }
+        .timeline-stage.completed .fa-truck {
+            color: white;
+        }
+        /* Icon colors for current stage */
+        .timeline-stage.current .fa-user {
+            color: white;
+        }
+        .timeline-stage.current .fa-warehouse {
+            color: white;
+        }
+        .timeline-stage.current .fa-shopping-cart {
+            color: white;
+        }
+        .timeline-stage.current .fa-user-check {
+            color: white;
+        }
+        .timeline-stage.current .fa-truck-loading {
+            color: white;
+        }
+        .timeline-stage.current .fa-truck {
+            color: white;
+        }
+        /* Icon colors for pending stages */
+        .timeline-stage.pending .fa-user {
+            color: #6c757d;
+        }
+        .timeline-stage.pending .fa-warehouse {
+            color: #6c757d;
+        }
+        .timeline-stage.pending .fa-shopping-cart {
+            color: #6c757d;
+        }
+        .timeline-stage.pending .fa-user-check {
+            color: #6c757d;
+        }
+        .timeline-stage.pending .fa-truck-loading {
+            color: #6c757d;
+        }
+        .timeline-stage.pending .fa-truck {
+            color: #6c757d;
+        }
+        .supplier-info {
+            color: #0d6efd;
+            font-weight: 500;
+        }
+        .spare-parts-badge {
+            background-color: #6f42c1;
+        }
+        .request-type-badge {
+            font-size: 0.7rem;
+        }
+        /* Stock status styles */
+        .stock-status {
+            font-size: 12px;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-weight: 600;
+        }
+        .stock-available {
+            background-color: #d1e7dd;
+            color: #0f5132;
+        }
+        .stock-insufficient {
+            background-color: #f8d7da;
+            color: #842029;
+        }
+        .stock-na {
+            background-color: #e2e3e5;
+            color: #41464b;
+        }
+        /* Action button styles */
+        .action-buttons-cell {
+            white-space: nowrap;
+        }
+        .action-buttons-cell .btn {
+            margin: 2px;
+            padding: 3px 8px;
+            font-size: 12px;
+        }
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .timeline-label {
+                font-size: 12px;
+            }
+            .timeline-status {
+                font-size: 11px;
+            }
+        }
+        @media (max-width: 992px) {
+            .timeline-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+            .timeline-label {
+                font-size: 11px;
+            }
+            .timeline-status {
+                font-size: 10px;
+            }
+        }
+        @media (max-width: 768px) {
+            .horizontal-timeline {
+                flex-wrap: wrap;
+                justify-content: flex-start;
+            }
+            .horizontal-timeline::before {
+                display: none;
+            }
+            .timeline-stage {
+                flex: 0 0 20%;
+                margin-bottom: 15px;
+            }
+            .table-responsive {
+                font-size: 12px;
+            }
+            .action-buttons-cell .btn {
+                font-size: 10px;
+                padding: 2px 5px;
+            }
+        }
+        @media (max-width: 576px) {
+            .table-responsive {
+                font-size: 11px;
+            }
+            .action-buttons-cell {
+                display: flex;
+                flex-direction: column;
+                gap: 2px;
+            }
+            .action-buttons-cell .btn {
+                width: 100%;
+                margin: 1px 0;
+            }
+        }

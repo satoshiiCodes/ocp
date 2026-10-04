@@ -1,0 +1,7 @@
+/* warehouses-style.css
+ * Extracted from warehouses.php - inline <style> block(s).
+ */
+
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }

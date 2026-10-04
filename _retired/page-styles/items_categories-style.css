@@ -1,0 +1,7 @@
+/* items_categories-style.css
+ * Extracted from items_categories.php - inline <style> block(s).
+ */
+
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }

@@ -1,0 +1,29 @@
+{
+  "page": "pr_spare_view_routing",
+  "guard": "OCP_PR_SPARE_VIEW_ROUTING_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 39], "expectFirst": "^<\\?php$", "expectLast": "^\\$pr_id = \\$_GET\\['id'\\];$" },
+    { "block": [
+      "",
+      "// All of this page's actions live in one file: the routing decisions - approving,",
+      "// rejecting, converting to a purchase order, a withdrawal slip or a job order, and",
+      "// the per-item stock handling. The forms post back to this page, so it is pulled in",
+      "// before anything is read or rendered - and after the header above, because the",
+      "// handlers work from $pr_id, $user and the request they route. It also carries",
+      "// getStatusBadge() and formatUserName(), which the markup below calls.",
+      "if (!defined('OCP_PR_SPARE_VIEW_ROUTING_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/pr_spare_view_routing-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup and the handlers above need, which are unpacked into this scope. The read",
+      "// block behind it works out, from the request itself, what it can become.",
+      "$ocp_endpoint = require __DIR__ . '/api/pr_spare_view_routing-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [2590, 5529], "expectFirst": "^\\?>$" }
+  ]
+}

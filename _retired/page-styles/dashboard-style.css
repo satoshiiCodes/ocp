@@ -1,0 +1,94 @@
+/* dashboard-style.css
+ * Extracted from dashboard.php - inline <style> block(s).
+ */
+
+            .badge-critical {
+                background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
+            .badge-warning {
+                background: linear-gradient(135deg, #fccb90 0%, #d57eeb 100%);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
+            .badge-monitor {
+                background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+                color: white;
+                padding: 5px 10px;
+                border-radius: 20px;
+            }
+            .threshold-info {
+                background-color: #f8f9fa;
+                border-left: 4px solid #dc3545;
+                padding: 10px 15px;
+                margin-bottom: 20px;
+                border-radius: 4px;
+            }
+            .summary-card {
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                border-radius: 10px;
+                padding: 20px;
+                margin-bottom: 20px;
+                transition: transform 0.3s;
+            }
+            .summary-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            .summary-card h3 {
+                font-size: 2rem;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .summary-card p {
+                margin-bottom: 0;
+                opacity: 0.9;
+            }
+            .expense-type-badge {
+                display: inline-block;
+                padding: 5px 10px;
+                border-radius: 15px;
+                font-size: 0.85rem;
+                font-weight: 500;
+                background-color: #e9ecef;
+            }
+            /* Make pie chart container smaller */
+            .small-pie-chart-container {
+                max-width: 300px;
+                margin: 0 auto 20px auto;
+            }
+            /* Gasoline card styles */
+            .gasoline-summary-card {
+                background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+                color: white;
+                border-radius: 10px;
+                padding: 15px;
+                margin-bottom: 15px;
+                transition: transform 0.3s;
+            }
+            .gasoline-summary-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            }
+            .gasoline-summary-card h4 {
+                font-size: 1.5rem;
+                font-weight: bold;
+                margin-bottom: 5px;
+            }
+            .gasoline-summary-card p {
+                margin-bottom: 0;
+                opacity: 0.9;
+                font-size: 0.9rem;
+            }
+            .gasoline-type-badge {
+                display: inline-block;
+                padding: 3px 8px;
+                border-radius: 12px;
+                font-size: 0.8rem;
+                background-color: #e9ecef;
+                margin: 2px;
+            }

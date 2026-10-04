@@ -1,0 +1,32 @@
+/* spare_parts-style.css
+ * Extracted from spare_parts.php - inline <style> block(s).
+ */
+
+            /* Match the action buttons styling from item_names.php with rounded edges */
+            .btn-group .btn {
+                margin-right: 7px;
+                border-radius: 0.25rem !important; /* This ensures rounded corners */
+            }
+            .btn-group .btn:first-child {
+                border-top-left-radius: 0.25rem !important;
+                border-bottom-left-radius: 0.25rem !important;
+            }
+            .btn-group .btn:last-child {
+                margin-right: 0;
+                border-top-right-radius: 0.25rem !important;
+                border-bottom-right-radius: 0.25rem !important;
+            }
+            /* Override Bootstrap's btn-group styling that might make buttons square */
+            .btn-group > .btn:not(:first-child) {
+                border-top-left-radius: 0.25rem !important;
+                border-bottom-left-radius: 0.25rem !important;
+            }
+            .btn-group > .btn:not(:last-child) {
+                border-top-right-radius: 0.25rem !important;
+                border-bottom-right-radius: 0.25rem !important;
+            }
+            .btn-group .btn-info, 
+            .btn-group .btn-warning, 
+            .btn-group .btn-danger {
+                border-radius: 0.25rem !important;
+            }

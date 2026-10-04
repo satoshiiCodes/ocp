@@ -1,0 +1,28 @@
+{
+  "page": "employee_registration",
+  "guard": "OCP_EMPLOYEE_REGISTRATION_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 25], "expectFirst": "^<\\?php$", "expectLast": "^\\$philhealth_amount = \\$philhealth_effectivity = \\$philhealth_notes = '';$" },
+    { "block": [
+      "",
+      "// All of this page's actions live in one file: updating an employee's details, wage",
+      "// or deductions, deleting one, and the view and edit requests its buttons make. The",
+      "// forms post back to this page, so it is pulled in before anything is read or",
+      "// rendered - and after the initialisation above, because the handlers assign to",
+      "// those variables and the markup below reads them, which is what lets a rejected",
+      "// form come back filled in.",
+      "if (!defined('OCP_EMPLOYEE_REGISTRATION_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/employee_registration-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope.",
+      "$ocp_endpoint = require __DIR__ . '/api/employee_registration-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [1419, 2513], "expectFirst": "^\\?>$" }
+  ]
+}

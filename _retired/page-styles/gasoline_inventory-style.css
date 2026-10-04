@@ -1,0 +1,78 @@
+/* gasoline_inventory-style.css
+ * Extracted from gasoline_inventory.php - inline <style> block(s).
+ */
+
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .dataTable-top {
+                padding: 8px 0;
+            }
+            .dataTable-bottom {
+                padding: 8px 0;
+            }
+            .inventory-table th, .movements-table th {
+                background-color: #f8f9fa;
+                font-weight: 600;
+            }
+            .text-success {
+                color: #198754 !important;
+            }
+            .text-danger {
+                color: #dc3545 !important;
+            }
+            .text-warning {
+                color: #fd7e14 !important;
+            }
+            .card-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+            .stock-out {
+                background-color: #ffcccc !important;
+            }
+            .stock-low {
+                background-color: #fff3cd !important;
+            }
+            .badge-out-of-stock {
+                background-color: #dc3545;
+                color: white;
+            }
+            .badge-low-stock {
+                background-color: #fd7e14;
+                color: white;
+            }
+            .badge-normal-stock {
+                background-color: #198754;
+                color: white;
+            }
+            .form-floating > .form-select {
+                padding-top: 1.625rem;
+                padding-bottom: 0.625rem;
+            }
+            .tank-capacity-bar {
+                height: 20px;
+                background-color: #e9ecef;
+                border-radius: 4px;
+                overflow: hidden;
+            }
+            .tank-capacity-fill {
+                height: 100%;
+                background-color: #0d6efd;
+                transition: width 0.3s ease;
+            }
+            .action-card {
+                transition: transform 0.2s ease-in-out;
+                height: 100%;
+            }
+            .action-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+            .action-card .card-body {
+                padding: 1.5rem;
+            }
+            .action-icon {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }

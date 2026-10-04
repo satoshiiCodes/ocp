@@ -1,0 +1,10 @@
+/* expenses_type-style.css
+ * Extracted from expenses_type.php - inline <style> block(s).
+ */
+
+            .form-floating > .form-control:not(:placeholder-shown) ~ label::after {
+                background-color: transparent !important;
+            }
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }

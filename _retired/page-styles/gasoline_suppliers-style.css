@@ -1,0 +1,7 @@
+/* gasoline_suppliers-style.css
+ * Extracted from gasoline_suppliers.php - inline <style> block(s).
+ */
+
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }

@@ -1,0 +1,40 @@
+{
+  "page": "view_project",
+  "guard": "OCP_VIEW_PROJECT_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 7], "expectFirst": "^<\\?php$", "expectLast": "^\\}$" },
+    { "block": [
+      "",
+      "// All of this page's actions live in one file: adding workers and rentals to the",
+      "// project, and removing either. Which project they act on is decided by the",
+      "// endpoint below, using the same posted-or-remembered rule the page used.",
+      "if (!defined('OCP_VIEW_PROJECT_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/view_project-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. It also resolves which",
+      "// project to show, from the posted id or the one remembered in the session, and",
+      "// redirects to the project list when there is neither. It carries the database",
+      "// connection itself, which is why the connection line moved with it.",
+      "$ocp_endpoint = require __DIR__ . '/api/view_project-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [329, 349], "expectEmptyFirst": true },
+    { "block": [
+      "",
+      "// Set status class for badge. The project itself comes from the endpoint above.",
+      "$status_class = '';",
+      "switch($project['status']) {",
+      "    case 'planning': $status_class = 'bg-secondary'; break;",
+      "    case 'active': $status_class = 'bg-success'; break;",
+      "    case 'completed': $status_class = 'bg-primary'; break;",
+      "    case 'on-hold': $status_class = 'bg-warning'; break;",
+      "}"
+    ] },
+    { "keep": [358, 846], "expectFirst": "^\\?>$" }
+  ]
+}

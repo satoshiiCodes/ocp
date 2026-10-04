@@ -1,0 +1,22 @@
+/* vehicles-style.css
+ * Extracted from vehicles.php - inline <style> block(s).
+ */
+
+            .status-badge {
+                font-size: 0.8rem;
+                padding: 0.35em 0.65em;
+            }
+            .badge-active {
+                background-color: #198754;
+            }
+            .badge-inactive {
+                background-color: #6c757d;
+            }
+            .action-buttons {
+                display: flex;
+                gap: 5px;
+            }
+            .action-btn {
+                padding: 0.25rem 0.5rem;
+                font-size: 0.875rem;
+            }

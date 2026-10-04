@@ -1,0 +1,99 @@
+/* issue_materials-style.css
+ * Extracted from issue_materials.php - inline <style> block(s).
+ */
+
+            .table-responsive {
+                overflow-x: auto;
+            }
+            .dataTable-top {
+                padding: 8px 0;
+            }
+            .dataTable-bottom {
+                padding: 8px 0;
+            }
+            .inventory-table th, .issued-table th {
+                background-color: #f8f9fa;
+                font-weight: 600;
+            }
+            .text-success {
+                color: #198754 !important;
+            }
+            .text-danger {
+                color: #dc3545 !important;
+            }
+            .card-title {
+                font-size: 1.1rem;
+                font-weight: 600;
+            }
+            .stock-out {
+                background-color: #ffcccc !important;
+            }
+            .stock-low {
+                background-color: #fff3cd !important;
+            }
+            .action-card {
+                transition: transform 0.2s ease-in-out;
+                height: 100%;
+            }
+            .action-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            }
+            .action-card .card-body {
+                padding: 1.5rem;
+            }
+            .action-icon {
+                font-size: 2rem;
+                margin-bottom: 1rem;
+            }
+            .employee-card {
+                border-left: 4px solid #0d6efd;
+            }
+            .part-card {
+                border-left: 4px solid #198754;
+            }
+            .available-stock {
+                font-size: 0.9rem;
+                color: #6c757d;
+            }
+            .employee-info {
+                font-size: 0.9rem;
+                color: #495057;
+            }
+            .price-info {
+                font-size: 0.85rem;
+                color: #6c757d;
+            }
+            .total-price {
+                font-weight: bold;
+                color: #198754;
+            }
+            .price-breakdown {
+                font-size: 0.85rem;
+                color: #666;
+            }
+            .part-item {
+                border: 1px solid #dee2e6;
+                border-radius: 5px;
+                padding: 15px;
+                margin-bottom: 15px;
+                background-color: #f8f9fa;
+            }
+            .remove-part-btn {
+                margin-top: 8px;
+            }
+            .estimated-total {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #198754;
+            }
+            .part-item-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                margin-bottom: 10px;
+            }
+            .part-item-number {
+                font-weight: bold;
+                color: #0d6efd;
+            }

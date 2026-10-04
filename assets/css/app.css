@@ -1,0 +1,22 @@
+/* app.css
+ * Small shared layer loaded by every page, after assets/css/app.build.css.
+ *
+ * The design system lives in assets/css/tailwind.css and compiles to app.build.css. This file
+ * only holds the handful of cross-page rules that are cheaper here than as utilities - it used
+ * to sit on top of the SB Admin + Bootstrap bundle, which has since been removed.
+ */
+
+/* Keep long tables usable on narrow screens. */
+.table-responsive {
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Sidebar scrolls independently of the page. */
+#layoutSidenav_nav {
+    overflow-y: auto;
+}
+
+/* Page data island / script hooks never render. */
+[data-ocp-hidden] {
+    display: none !important;
+}

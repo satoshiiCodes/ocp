@@ -1,0 +1,7 @@
+/* suppliers-style.css
+ * Extracted from suppliers.php - inline <style> block(s).
+ */
+
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }

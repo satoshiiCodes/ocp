@@ -1,0 +1,432 @@
+/* pr_view_routing-style.css
+ * Extracted from pr_view_routing.php - inline <style> block(s).
+ */
+
+        .routing-timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        .routing-timeline::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background-color: #dee2e6;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -23px;
+            top: 5px;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #6c757d;
+            border: 2px solid white;
+        }
+        .timeline-item.current::before {
+            background-color: #0d6efd;
+            box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.25);
+        }
+        .timeline-item.completed::before {
+            background-color: #198754;
+        }
+        .action-buttons .btn {
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        .item-row {
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
+        }
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        .stock-status {
+            font-weight: bold;
+        }
+        .stock-available {
+            color: #198754;
+        }
+        .stock-low {
+            color: #fd7e14;
+        }
+        .stock-out {
+            color: #dc3545;
+        }
+        .delivered {
+            color: #198754;
+        }
+        .partially-delivered {
+            color: #ffc107;
+        }
+        .po-item-row {
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .table-responsive {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .supplier-select {
+            min-width: 200px;
+        }
+        .threshold-info {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0d6efd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .threshold-exceed {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+        .threshold-not-exceed {
+            background-color: #d1e7dd;
+            border-left: 4px solid #198754;
+        }
+        .threshold-form {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .received-alert {
+            background-color: #d1e7dd;
+            border-left: 4px solid #198754;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .receiving-status {
+            font-weight: bold;
+        }
+        .status-pending {
+            color: #6c757d;
+        }
+        .status-partial {
+            color: #fd7e14;
+        }
+        .status-delivered {
+            color: #198754;
+        }
+        .threshold-warning {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .adjust-threshold-form {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .view-only {
+            background-color: #f8f9fa;
+            cursor: not-allowed;
+        }
+        .disabled-button {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+        .approval-restriction {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .adjustment-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .adjustment-buttons .btn {
+            flex: 1;
+        }
+        .btn-add-threshold {
+            background-color: #198754;
+            border-color: #198754;
+        }
+        .btn-subtract-threshold {
+            background-color: #dc3545;
+            border-color: #dc3545;
+        }
+        .routing-actions-buttons {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .routing-actions-buttons .btn {
+            flex: 1;
+        }
+        .single-action-button {
+            margin-top: 15px;
+        }
+        .horizontal-timeline {
+            display: flex;
+            justify-content: space-between;
+            overflow-x: auto;
+            padding: 20px 0;
+            position: relative;
+            margin-bottom: 20px;
+            min-width: 100%;
+        }
+        .horizontal-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background-color: #dee2e6;
+            z-index: 1;
+        }
+        .timeline-stage {
+            flex: 0 0 auto;
+            min-width: 140px;
+            max-width: 160px;
+            text-align: center;
+            position: relative;
+            padding: 0 5px;
+            z-index: 2;
+            margin: 0 2px;
+        }
+        .timeline-stage.completed .timeline-icon {
+            background-color: #198754;
+            border-color: #198754;
+            color: white;
+        }
+        .timeline-stage.current .timeline-icon {
+            background-color: #0d6efd;
+            border-color: #0d6efd;
+            color: white;
+            box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.2);
+        }
+        .timeline-stage.pending .timeline-icon {
+            background-color: #f8f9fa;
+            border-color: #dee2e6;
+            color: #6c757d;
+        }
+        .timeline-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border: 3px solid white;
+            margin: 0 auto 10px;
+            position: relative;
+            z-index: 3;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            transition: all 0.3s ease;
+        }
+        .timeline-label {
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 5px;
+            white-space: normal;
+            line-height: 1.2;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-break: break-word;
+            padding: 0 2px;
+        }
+        .timeline-status {
+            font-size: 11px;
+            color: #6c757d;
+        }
+        .timeline-stage.completed .timeline-status {
+            color: #198754;
+            font-weight: 600;
+        }
+        .timeline-stage.current .timeline-status {
+            color: #0d6efd;
+            font-weight: 600;
+        }
+        .final-status {
+            background-color: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .final-status.completed {
+            background-color: #d1e7dd;
+            border-left: 4px solid #198754;
+        }
+        .final-status.rejected {
+            background-color: #f8d7da;
+            border-left: 4px solid #dc3545;
+        }
+        .scroll-container {
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .scroll-container::-webkit-scrollbar {
+            height: 6px;
+        }
+        .scroll-container::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 3px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb {
+            background: #888;
+            border-radius: 3px;
+        }
+        .scroll-container::-webkit-scrollbar-thumb:hover {
+            background: #555;
+        }
+        .timeline-stage.completed .fa-user,
+        .timeline-stage.completed .fa-warehouse,
+        .timeline-stage.completed .fa-shopping-cart,
+        .timeline-stage.completed .fa-calculator,
+        .timeline-stage.completed .fa-user-check,
+        .timeline-stage.completed .fa-truck-loading,
+        .timeline-stage.completed .fa-clipboard-check {
+            color: white;
+        }
+        .timeline-stage.current .fa-user,
+        .timeline-stage.current .fa-warehouse,
+        .timeline-stage.current .fa-shopping-cart,
+        .timeline-stage.current .fa-calculator,
+        .timeline-stage.current .fa-user-check,
+        .timeline-stage.current .fa-truck-loading,
+        .timeline-stage.current .fa-clipboard-check {
+            color: white;
+        }
+        .timeline-stage.pending .fa-user,
+        .timeline-stage.pending .fa-warehouse,
+        .timeline-stage.pending .fa-shopping-cart,
+        .timeline-stage.pending .fa-calculator,
+        .timeline-stage.pending .fa-user-check,
+        .timeline-stage.pending .fa-truck-loading,
+        .timeline-stage.pending .fa-clipboard-check {
+            color: #6c757d;
+        }
+        .request-type-badge {
+            font-size: 0.9em;
+            padding: 0.25em 0.6em;
+        }
+        .no-warehouse {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .supplier-info {
+            color: #0d6efd;
+            font-weight: 500;
+        }
+        .ws-item-row {
+            background-color: #e7f9ed;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .withdrawal-info {
+            background-color: #e7f9ed;
+            border-left: 4px solid #28a745;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .warehouse-releasing-info {
+            background-color: #e7f3ff;
+            border-left: 4px solid #0d6efd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .delivery-requirement {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+        }
+        .hidden-actions {
+            display: none;
+        }
+        .badge-ws-completed {
+            background-color: #198754;
+            color: white;
+        }
+        .flow-indicator {
+            display: inline-block;
+            padding: 0.25em 0.6em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            margin-left: 5px;
+        }
+        .flow-pows {
+            background-color: #ffc107;
+            color: #000;
+        }
+        .document-creation-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .document-creation-buttons .btn {
+            flex: 1;
+        }
+        .document-badge {
+            display: inline-block;
+            padding: 0.35em 0.65em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.25rem;
+            margin-left: 5px;
+        }
+        .document-ws {
+            background-color: #198754;
+            color: white;
+        }
+        .document-pr_po {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .document-po_ws {
+            background-color: #ffc107;
+            color: black;
+        }
+        .batch-column {
+            display: none;
+        }
+        .approval-note {
+            font-size: 0.9rem;
+            color: #856404;
+            background-color: #fff3cd;
+            border: 1px solid #ffeeba;
+            border-radius: 4px;
+            padding: 10px;
+            margin-top: 10px;
+        }
+        .badge-default {
+            background-color: #6c757d;
+            color: white;
+        }

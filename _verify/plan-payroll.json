@@ -1,0 +1,38 @@
+{
+  "page": "payroll",
+  "guard": "OCP_PAYROLL_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 17], "expectLast": "^use PhpOffice\\\\PhpSpreadsheet\\\\Shared\\\\Date;$" },
+    { "block": [
+      "",
+      "// The helper functions this page and its actions file both use: the overtime and",
+      "// attendance calculations, the CSV/Excel parsers, and the routine that writes",
+      "// parsed attendance to the database. Loaded here, before the actions run, because",
+      "// the POST handlers call them.",
+      "require_once __DIR__ . '/includes/payroll-functions.php';"
+    ] },
+    { "keep": [26, 47], "expectFirst": "^// Format the display name$" },
+    { "block": [
+      "// All of this page's actions live in one file: the filters, deleting, editing and",
+      "// adding an attendance record, and importing a file. Every branch re-renders, so",
+      "// the messages and the chosen filters are left in scope for the markup below.",
+      "if (!defined('OCP_PAYROLL_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/payroll-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. attendance_error is only",
+      "// taken when the endpoint set one, and the filters it reads come from the actions",
+      "// file above.",
+      "$ocp_endpoint = require __DIR__ . '/api/payroll-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    if ($ocp_key === 'attendance_error' && empty($ocp_value)) {",
+      "        continue;",
+      "    }",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [1078, 1314], "expectFirst": "^\\?>$" }
+  ]
+}

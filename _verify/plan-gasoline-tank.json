@@ -1,0 +1,35 @@
+{
+  "page": "gasoline_tank",
+  "guard": "OCP_GASOLINE_TANK_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectLast": "page_data\\.php" },
+    { "block": [
+      "// $swal_data and the form-repopulation values carry what the actions file wants",
+      "// shown. They are created here, before the actions run, so the markup below",
+      "// always finds them defined.",
+      "$message = '';",
+      "$message_type = ''; // success or danger",
+      "$swal_data = []; // For SweetAlert2 data",
+      "",
+      "// All of this page's actions live in one file: deleting, editing and adding a",
+      "// gasoline tank. The forms post back to this page, so it is pulled in before",
+      "// anything is read or rendered.",
+      "if (!defined('OCP_GASOLINE_TANK_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/gasoline_tank-actions.php';",
+      "}"
+    ] },
+    { "keep": [228, 244], "expectFirst": "^$" },
+    { "block": [
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. A fetch failure comes",
+      "// back as swal_data too, so it is not lost.",
+      "$ocp_endpoint = require __DIR__ . '/api/gasoline_tank-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [281, 569], "expectFirst": "^\\?>$" }
+  ]
+}

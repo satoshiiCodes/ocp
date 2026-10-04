@@ -1,0 +1,226 @@
+/* includes/top_bar-style.css
+ * Extracted from includes/top_bar.php - inline <style> block(s).
+ */
+
+/* The notification panel.
+ *
+ * Its width is set here rather than in an inline style on the element. It used to carry
+ * style="min-width: 400px; max-width: 500px", and a 400px MINIMUM cannot shrink: on a 360-430px
+ * phone the panel was wider than the screen, so it hung off the edge and dragged the page into
+ * horizontal scroll. A width capped against the viewport instead lets it fit anywhere, and
+ * dvw/dvh (with vw/vh as the fallback) account for the mobile URL bar so the panel is not
+ * measured against a height the browser is about to take back. */
+.dropdown-notifications {
+    min-width: 0;
+    width: 26rem;
+    max-width: min(26rem, calc(100vw - 1.5rem));
+    max-height: min(560px, calc(100vh - 5rem));
+    max-height: min(560px, calc(100dvh - 5rem));
+    overflow-y: auto;
+    /* Horizontal is left visible on purpose: if a line fails to wrap it must be able to spill
+     * where it can be seen, rather than being silently clipped out of the panel. */
+    overflow-x: visible;
+    /* Momentum scrolling for the touch case, and no scroll chaining to the page behind it. */
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior: contain;
+}
+
+/* In a flex row the text column must be allowed to shrink below its content width, or
+ * overflow-wrap never gets the chance to break a long word. */
+.dropdown-notifications .dropdown-item > .flex-grow-1 {
+    min-width: 0;
+}
+
+.dropdown-notifications .dropdown-item {
+    border-left: 3px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.dropdown-notifications .dropdown-item:hover {
+    background-color: #f8f9fa;
+    border-left-color: #0d6efd;
+}
+
+/* The source icon. Sized once here so the narrow-screen rule can shrink it in one place. The
+ * glyph is centred by flex rather than a padding utility, so the circle stays a circle whatever
+ * the icon is, and it can shrink without the padding squeezing the glyph out. */
+.dropdown-notifications .notification-item-icon {
+    width: 2.25rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dropdown-notifications .bg-primary {
+    background-color: #0d6efd !important;
+}
+
+.dropdown-notifications .dropdown-header {
+    background-color: #f8f9fa;
+    font-weight: 600;
+    padding: 0.75rem 1rem;
+}
+
+.dropdown-notifications .dropdown-footer {
+    background-color: #f8f9fa;
+    padding: 0.75rem 1rem;
+}
+
+/* A long PR number, a long person's name or a long stage label must wrap rather than widen the
+ * panel. break-word is what stops an unbroken token from pushing the layout out, and
+ * white-space is reset because Bootstrap's heading styles set nowrap, which beat both of the
+ * other two and let a long reference run straight out of the panel. */
+.dropdown-notifications .notification-reference,
+.dropdown-notifications .notification-meta,
+.dropdown-notifications .notification-meta strong {
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* Custom scrollbar for dropdown */
+.dropdown-notifications::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dropdown-notifications::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+.dropdown-notifications::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 3px;
+}
+
+.dropdown-notifications::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Badge positioning */
+.position-relative .badge {
+    font-size: 0.6rem;
+    padding: 0.25em 0.4em;
+    min-width: 1.2em;
+}
+
+/* Applied by assets/js/includes/top_bar.js for a moment when a new request arrives on the
+ * stream, so an action landing while the page is open is noticeable without a refresh. */
+@keyframes notification-pulse {
+    0%   { transform: scale(1);    color: inherit; }
+    25%  { transform: scale(1.25); color: #ffc107; }
+    50%  { transform: scale(1);    color: inherit; }
+    75%  { transform: scale(1.25); color: #ffc107; }
+    100% { transform: scale(1);    color: inherit; }
+}
+
+.notification-pulse > i {
+    animation: notification-pulse 1.6s ease-in-out;
+}
+
+/* Form button styles */
+.dropdown-notifications form button {
+    cursor: pointer;
+}
+
+.dropdown-notifications form button:hover {
+    background-color: #f8f9fa !important;
+}
+
+/* ---------------------------------------------------------------------------------------
+ * Small screens
+ *
+ * Bootstrap's sm breakpoint (767.98px) is where the navbar is still laid out in its expanded
+ * form and the panel has to share the width with everything else. Tighter padding, a smaller
+ * source icon and softer type buy back the horizontal room the old fixed 400px panel assumed.
+ * --------------------------------------------------------------------------------------- */
+@media (max-width: 767.98px) {
+    /* On a phone the panel cannot stay anchored to the bell. Bootstrap positions it against the
+     * bell's own .nav-item, which is only as wide as the icon; any panel wider than that hangs
+     * out to the LEFT of the screen - visually clipped, and it covers the brand on the way. So
+     * on small screens the panel is anchored to the viewport instead: fixed under the navbar,
+     * full width minus a small gutter on both sides. `!important` is needed because Bootstrap's
+     * JS writes the anchor inline on the element.
+     *
+     * Nothing here depends on Popper: the panel is a plain list, so pinning it costs nothing. */
+    .dropdown-notifications.show,
+    .dropdown-notifications.showing {
+        position: fixed !important;
+        top: var(--ocp-notification-top, 3.5rem) !important;
+        left: 0.5rem !important;
+        right: 0.5rem !important;
+        bottom: auto !important;
+        inset-inline: 0.5rem !important;
+        transform: none !important;
+        margin: 0 !important;
+        width: auto;
+        max-width: none;
+        max-height: min(70vh, calc(100dvh - 5rem));
+        /* Keeps the panel below the navbar, which sits above it in z-order. */
+        z-index: 1030;
+    }
+
+    .dropdown-notifications .dropdown-header {
+        padding: 0.6rem 0.75rem;
+        font-size: 0.9rem;
+    }
+
+    .dropdown-notifications .dropdown-item {
+        padding: 0.625rem 0.75rem;
+        /* The 3px accent stripe would eat into an already tight row. */
+        border-left-width: 0;
+    }
+
+    .dropdown-notifications .notification-item-icon {
+        width: 1.75rem;
+        height: 1.75rem;
+        font-size: 0.8rem;
+        margin-right: 0.5rem !important;
+    }
+
+    .dropdown-notifications .notification-reference {
+        font-size: 0.9rem;
+        margin-bottom: 0.15rem !important;
+    }
+
+    .dropdown-notifications .notification-meta {
+        font-size: 0.8rem;
+        margin-bottom: 0.35rem !important;
+    }
+
+    .dropdown-notifications .dropdown-footer {
+        padding: 0.6rem 0.75rem;
+    }
+
+    .dropdown-notifications .dropdown-footer .btn {
+        width: 100%;
+    }
+}
+
+/* Very narrow phones (360px and below, including 320px): tighter gutter and type so the row
+ * content still fits without being squeezed. */
+@media (max-width: 400px) {
+    .dropdown-notifications.show,
+    .dropdown-notifications.showing {
+        left: 0.25rem !important;
+        right: 0.25rem !important;
+        inset-inline: 0.25rem !important;
+    }
+
+    .dropdown-notifications .notification-meta {
+        font-size: 0.75rem;
+    }
+
+    .dropdown-notifications .dropdown-item .badge {
+        font-size: 0.65rem;
+    }
+}
+
+/* Landscape phones: very little height, so cap the panel against it. */
+@media (max-height: 480px) {
+    .dropdown-notifications {
+        max-height: calc(100dvh - 4rem);
+    }
+}
+

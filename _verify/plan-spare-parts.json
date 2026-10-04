@@ -1,0 +1,35 @@
+{
+  "page": "spare_parts",
+  "guard": "OCP_SPARE_PARTS_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectLast": "page_data\\.php" },
+    { "block": [
+      "// The message the actions file wants shown. It is created here, before the",
+      "// actions run, so the markup below always finds it defined.",
+      "$message = '';",
+      "$message_type = ''; // success or danger",
+      "",
+      "// All of this page's actions live in one file: deleting, editing and adding a",
+      "// spare part. The forms post back to this page, so it is pulled in before",
+      "// anything is read or rendered. A rejected submission leaves its message set and",
+      "// the markup below repopulates the form from $_POST.",
+      "if (!defined('OCP_SPARE_PARTS_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/spare_parts-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. error_message is only",
+      "// taken when the endpoint actually set one, so a message from the actions file",
+      "// is not wiped out.",
+      "$ocp_endpoint = require __DIR__ . '/api/spare_parts-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    if (in_array($ocp_key, ['error_message', 'message', 'message_type'], true) && empty($ocp_value)) {",
+      "        continue;",
+      "    }",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [248, 595], "expectFirst": "^\\?>$" }
+  ]
+}

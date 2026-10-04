@@ -1,0 +1,28 @@
+{
+  "page": "index",
+  "guard": "OCP_INDEX_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 4], "expectLast": "db_config\\.php';" },
+    { "block": [
+      "",
+      "// The sign-in POST is handled by the page, just below: its result is what the",
+      "// form renders, so it cannot move out. The actions file is the page's one place",
+      "// for actions and the endpoint its one place for reads, as on every other page.",
+      "if (!defined('OCP_INDEX_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/index-actions.php';",
+      "}"
+    ] },
+    { "keep": [6, 7], "expectFirst": "^// Process login form$", "expectLast": "^\\$error = '';$" },
+    { "block": [
+      "",
+      "// The page's variables, from its endpoint.",
+      "$ocp_endpoint = require __DIR__ . '/api/index-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);",
+      ""
+    ] },
+    { "keep": [8, 140], "expectFirst": "^if \\(\\$_SERVER\\['REQUEST_METHOD'\\] === 'POST'\\) \\{$" }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "page": "expenses",
+  "guard": "OCP_EXPENSES_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectFirst": "^<\\?php$", "expectLast": "page_data\\.php';$" },
+    { "block": [
+      "// All of this page's actions live in one file: adding, editing and deleting an",
+      "// expense. The forms post back to this page, so it is pulled in before anything",
+      "// is read or rendered.",
+      "if (!defined('OCP_EXPENSES_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/expenses-actions.php';",
+      "}",
+      "",
+      "// Check for session messages to display with SweetAlert2. This runs after the",
+      "// actions file, which sets them, and before the endpoint, which may set one too.",
+      "$swal_message = '';",
+      "$swal_message_type = '';",
+      "if (isset($_SESSION['swal_message'])) {",
+      "    $swal_message = $_SESSION['swal_message'];",
+      "    $swal_message_type = $_SESSION['swal_message_type'];",
+      "    unset($_SESSION['swal_message']);",
+      "    unset($_SESSION['swal_message_type']);",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. It carries the shared",
+      "// helper the page and the actions file both call.",
+      "$ocp_endpoint = require __DIR__ . '/api/expenses-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [567, 1205], "expectFirst": "^\\?>$" }
+  ]
+}

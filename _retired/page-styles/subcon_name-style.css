@@ -1,0 +1,7 @@
+/* subcon_name-style.css
+ * Extracted from subcon_name.php - inline <style> block(s).
+ */
+
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }

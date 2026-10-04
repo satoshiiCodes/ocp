@@ -1,0 +1,30 @@
+{
+  "page": "gasoline_inventory",
+  "guard": "OCP_GASOLINE_INVENTORY_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 32], "expectFirst": "^<\\?php$" },
+    { "block": [
+      "",
+      "// All of this page's actions live in one file: gasoline in, gasoline out, a",
+      "// transfer between tanks, setting a minimum level and an opening stock entry. The",
+      "// forms post back to this page, so it is pulled in before anything is read or",
+      "// rendered.",
+      "if (!defined('OCP_GASOLINE_INVENTORY_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/gasoline_inventory-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. swal_data is only taken",
+      "// when the endpoint set one, so a message from the actions file is not wiped out.",
+      "$ocp_endpoint = require __DIR__ . '/api/gasoline_inventory-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    if ($ocp_key === 'swal_data' && empty($ocp_value)) {",
+      "        continue;",
+      "    }",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [643, 1341], "expectFirst": "^\\?>$" }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "page": "purchase_request",
+  "guard": "OCP_PURCHASE_REQUEST_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 31], "expectFirst": "^<\\?php$", "expectLast": "^\\}$" },
+    { "block": [
+      "",
+      "// All of this page's actions live in one file: creating a purchase request,",
+      "// updating one, changing its status and deleting it. The forms post back to this",
+      "// page, so it is pulled in before anything is read or rendered.",
+      "if (!defined('OCP_PURCHASE_REQUEST_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/purchase_request-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. The same file answers",
+      "// the page's JavaScript when it asks for one purchase request by ?id=, and it",
+      "// carries the helper the form needs below.",
+      "$ocp_endpoint = require __DIR__ . '/api/purchase_request-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [481, 547], "expectFirst": "^// Function to get status badge class$", "expectLast": "^\\$pr_number = generatePRNumber\\(\\$pdo\\);$" },
+    { "keep": [548, 1235], "expectFirst": "^\\?>$" }
+  ]
+}

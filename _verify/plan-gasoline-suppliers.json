@@ -1,0 +1,39 @@
+{
+  "page": "gasoline_suppliers",
+  "guard": "OCP_GASOLINE_SUPPLIERS_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectLast": "page_data\\.php" },
+    { "block": [
+      "// The SweetAlert2 message the actions file wants shown. These are created here,",
+      "// before the actions run, so the markup below always finds them defined.",
+      "$swal_message = '';",
+      "$swal_type = ''; // success, error, warning, info",
+      "$swal_title = '';",
+      "",
+      "// All of this page's actions live in one file: deleting, updating and adding a",
+      "// gasoline supplier. The forms post back to this page, so it is pulled in before",
+      "// anything is read or rendered. A rejected submission leaves the message set and",
+      "// the markup below shows it; a success redirects.",
+      "if (!defined('OCP_GASOLINE_SUPPLIERS_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/gasoline_suppliers-actions.php';",
+      "}",
+      "",
+      "// A redirect can carry the message back on the query string.",
+      "// Check for SweetAlert2 message in URL parameters (for redirects)",
+      "if (isset($_GET['swal_message']) && isset($_GET['swal_type']) && isset($_GET['swal_title'])) {",
+      "    $swal_title = urldecode($_GET['swal_title']);",
+      "    $swal_message = urldecode($_GET['swal_message']);",
+      "    $swal_type = $_GET['swal_type'];",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope.",
+      "$ocp_endpoint = require __DIR__ . '/api/gasoline_suppliers-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [209, 527], "expectFirst": "^\\?>$" }
+  ]
+}

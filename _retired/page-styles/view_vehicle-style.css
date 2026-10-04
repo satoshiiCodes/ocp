@@ -1,0 +1,28 @@
+/* view_vehicle-style.css
+ * Extracted from view_vehicle.php - inline <style> block(s).
+ */
+
+            .vehicle-details-card {
+                box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+                border: 1px solid #e3e6f0;
+                border-radius: 0.35rem;
+            }
+            .detail-label {
+                font-weight: 600;
+                color: #6e707e;
+            }
+            .status-badge {
+                font-size: 0.8rem;
+                padding: 0.35em 0.65em;
+            }
+            .badge-active {
+                background-color: #198754;
+            }
+            .badge-inactive {
+                background-color: #6c757d;
+            }
+            .fuel-table th,
+            .parts-table th,
+            .rentals-table th {
+                background-color: #f8f9fc;
+            }

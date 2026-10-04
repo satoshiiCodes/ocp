@@ -1,0 +1,422 @@
+/* purchase_request-style.css
+ * Extracted from purchase_request.php - inline <style> block(s).
+ */
+
+        .status-badge, .doc-type-badge {
+            font-size: 0.8rem;
+        }
+        .pr-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .pr-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .item-row {
+            border-bottom: 1px solid #dee2e6;
+            padding: 15px 0;
+            position: relative;
+        }
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        .action-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
+            justify-content: center;
+        }
+        .action-buttons .btn {
+            min-width: 35px;
+            padding: 0.25rem 0.5rem;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .request-type-selector {
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .request-type-option {
+            padding: 0.5rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            margin: 0.25rem;
+        }
+        .request-type-option:hover {
+            background-color: #f8f9fa;
+        }
+        .request-type-option.active {
+            background-color: #e7f1ff;
+            border-color: #0d6efd;
+        }
+        .type-dependent-field {
+            display: none;
+        }
+        
+        /* Document type tooltips */
+        .doc-type-info {
+            border-bottom: 1px dashed #6c757d;
+            cursor: help;
+        }
+        
+        /* Improved item row layout for better button positioning */
+        .item-row {
+            position: relative;
+            padding-right: 70px;
+        }
+        
+        .remove-btn-container {
+            position: absolute;
+            top: 15px;
+            right: 10px;
+            z-index: 5;
+        }
+        
+        /* Document numbers styling */
+        .document-numbers {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .document-number-item {
+            font-size: 0.9rem;
+        }
+        .document-number-item i {
+            width: 16px;
+            margin-right: 4px;
+            font-size: 0.8rem;
+        }
+        .pr-number {
+            color: #0d6efd;
+        }
+        .po-number {
+            color: #6f42c1;
+        }
+        .ws-number {
+            color: #fd7e14;
+        }
+        
+        /* Desktop styles - optimized for modal */
+        @media (min-width: 992px) {
+            .item-row .row {
+                display: flex;
+                flex-wrap: wrap;
+                margin-right: -5px;
+                margin-left: -5px;
+            }
+            
+            .item-row [class*="col-"] {
+                padding-right: 5px;
+                padding-left: 5px;
+            }
+            
+            .item-col { 
+                width: 40%; 
+            }
+            .qty-col { 
+                width: 15%; 
+            }
+            .unit-cost-col { 
+                width: 15%; 
+            }
+            .warehouse-col { 
+                width: 25%; 
+            }
+            
+            /* Project mode desktop - hide unit cost, adjust widths */
+            .project-mode .item-col { 
+                width: 48%; 
+            }
+            .project-mode .qty-col { 
+                width: 18%; 
+            }
+            .project-mode .warehouse-col { 
+                width: 30%; 
+            }
+            .project-mode .unit-cost-col { 
+                display: none; 
+            }
+        }
+        
+        /* Tablet styles */
+        @media (min-width: 768px) and (max-width: 991px) {
+            .item-row {
+                padding-right: 60px;
+            }
+            
+            .item-row .row > div {
+                width: 50%;
+            }
+            
+            .item-col, .qty-col, .unit-cost-col, .warehouse-col {
+                width: 100%;
+            }
+        }
+        
+        /* Mobile styles */
+        @media (max-width: 767px) {
+            .item-row {
+                padding-right: 50px;
+                padding-top: 20px;
+            }
+            
+            .remove-btn-container {
+                top: 10px;
+                right: 10px;
+            }
+            
+            .item-row .row > div {
+                width: 100%;
+            }
+            
+            .modal-dialog {
+                margin: 0.5rem;
+            }
+            
+            .form-floating {
+                margin-bottom: 1rem;
+            }
+            
+            .request-type-option {
+                margin: 0.5rem 0;
+            }
+        }
+        
+        /* Status cards responsive */
+        @media (max-width: 576px) {
+            .card .card-body {
+                padding: 0.75rem;
+            }
+            
+            .card .card-title {
+                font-size: 1.25rem;
+                margin-bottom: 0.25rem;
+            }
+            
+            .card .card-text {
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* Modal improvements */
+        .modal-dialog {
+            max-height: 90vh;
+        }
+        
+        .modal-body {
+            max-height: calc(90vh - 120px);
+            overflow-y: auto;
+            padding-bottom: 80px;
+        }
+        
+        /* Required field indicator */
+        .required-field label::after {
+            content: " *";
+            color: red;
+        }
+        
+        /* Improved modal footer */
+        .modal-footer {
+            position: sticky;
+            bottom: 0;
+            background-color: white;
+            border-top: 1px solid #dee2e6;
+            z-index: 10;
+        }
+        
+        /* Better spacing for form elements */
+        .form-floating > label {
+            padding-left: 0.75rem;
+        }
+        
+        /* Stock preview styling */
+        #stockPreview {
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        
+        /* Withdrawal slip specific styling */
+        .ws-icon {
+            color: white;
+        }
+        
+        /* Table styling for view modal */
+        .table th {
+            background-color: #f8f9fa;
+            font-weight: 600;
+        }
+        .table td, .table th {
+            padding: 10px;
+            vertical-align: middle;
+        }
+        .table tbody tr:hover {
+            background-color: #f5f5f5;
+        }
+        /* PDF Dropdown styling */
+        .btn-group .dropdown-menu {
+            position: absolute !important;
+            z-index: 1000;
+            min-width: 200px;
+        }
+
+        .action-buttons .btn-group {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        /* Ensure dropdown button is properly sized */
+        .action-buttons .btn-group .btn {
+            min-width: 35px;
+            padding: 0.25rem 0.5rem;
+        }
+
+        /* Mobile responsiveness for dropdown */
+        @media (max-width: 768px) {
+            .btn-group .dropdown-menu {
+                position: fixed !important;
+                top: auto !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+                width: 90% !important;
+                max-width: 300px;
+                z-index: 9999;
+            }
+            
+            .btn-group .dropdown-menu.show {
+                display: block !important;
+            }
+        }
+
+        /* Dropdown item styling */
+        .dropdown-item {
+            font-size: 0.9rem;
+            padding: 0.5rem 1rem;
+        }
+
+        .dropdown-item i {
+            width: 20px;
+            text-align: center;
+        }
+
+        .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+
+        .dropdown-divider {
+            margin: 0.25rem 0;
+        }
+        
+        /* Searchable dropdown styles - UPDATED for the new display format */
+        .searchable-dropdown-container {
+            position: relative;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+        
+        .searchable-dropdown-input {
+            width: 100%;
+            padding: 1rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            height: calc(3.5rem + 2px);
+            white-space: pre-wrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .searchable-dropdown-input:focus {
+            color: #212529;
+            background-color: #fff;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25);
+        }
+        
+        .searchable-dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .searchable-dropdown-list.show {
+            display: block;
+        }
+        
+        .searchable-dropdown-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .searchable-dropdown-item:hover,
+        .searchable-dropdown-item.selected {
+            background-color: #e7f1ff;
+        }
+        
+        .searchable-dropdown-item:last-child {
+            border-bottom: none;
+        }
+        
+        /* Updated styles for the new item display format */
+        .searchable-dropdown-item .item-code {
+            font-weight: 600;
+            color: #0d6efd;
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 2px;
+        }
+        
+        .searchable-dropdown-item .item-name {
+            color: #212529;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 2px;
+        }
+        
+        .searchable-dropdown-item .item-category {
+            color: #6c757d;
+            font-size: 0.85rem;
+            display: block;
+        }
+        
+        .searchable-dropdown-no-results {
+            padding: 0.5rem 1rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+        
+        /* Adjust item-col for searchable dropdown */
+        .item-col {
+            position: relative;
+        }
+        
+        /* For the selected item display in the input - NEW FORMAT */
+        .searchable-dropdown-input.item-selected {
+            background-color: #f8f9fa;
+            font-family: inherit;
+            line-height: 1.5;
+            padding: 0.75rem;
+            white-space: nowrap;
+        }

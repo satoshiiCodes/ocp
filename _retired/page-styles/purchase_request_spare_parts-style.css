@@ -1,0 +1,221 @@
+/* purchase_request_spare_parts-style.css
+ * Extracted from purchase_request_spare_parts.php - inline <style> block(s).
+ */
+
+        .status-badge {
+            font-size: 0.8rem;
+        }
+        .pr-card {
+            transition: transform 0.2s ease-in-out;
+        }
+        .pr-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .item-row {
+            border-bottom: 1px solid #dee2e6;
+            padding: 10px 0;
+        }
+        .item-row:last-child {
+            border-bottom: none;
+        }
+        .action-buttons {
+            display: flex;
+            flex-wrap: nowrap;
+            gap: 5px;
+            white-space: nowrap;
+            justify-content: center;
+        }
+        .action-buttons .btn {
+            min-width: 35px;
+            padding: 0.25rem 0.5rem;
+        }
+        .table-responsive {
+            overflow-x: auto;
+        }
+        .request-type-badge {
+            font-size: 0.7rem;
+            margin-left: 5px;
+        }
+        .request-type-selector {
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+        }
+        .request-type-option {
+            padding: 0.5rem;
+            cursor: pointer;
+            border: 1px solid transparent;
+            border-radius: 0.25rem;
+            margin: 0.25rem;
+        }
+        .request-type-option:hover {
+            background-color: #f8f9fa;
+        }
+        .request-type-option.active {
+            background-color: #e7f1ff;
+            border-color: #0d6efd;
+        }
+        .issue-fields {
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #fff3cd;
+        }
+        .issue-fields h6 {
+            color: #198754;
+        }
+        .materials-fields {
+            border: 1px solid #dee2e6;
+            border-radius: 0.375rem;
+            padding: 1rem;
+            margin-bottom: 1rem;
+            background-color: #fff3cd;
+        }
+        .materials-fields h6 {
+            color: #856404;
+        }
+        .cost-fields {
+            transition: all 0.3s ease;
+        }
+        .cost-fields.hidden {
+            display: none;
+        }
+        @media (max-width: 1400px) {
+            .action-buttons {
+                flex-wrap: wrap;
+                gap: 3px;
+                justify-content: center;
+            }
+            .action-buttons .btn {
+                font-size: 0.75rem;
+                padding: 0.2rem 0.4rem;
+            }
+        }
+        .badge-bg-warning {
+            background-color: #ffc107 !important;
+            color: #212529 !important;
+        }
+        .request-type-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+        }
+        .ws-number {
+            color: #fd7e14;
+        }
+        .spr-number {
+            color: #0d6efd;
+        }
+        .ippr-number {
+            color: #28a745;
+        }
+        .po-number {
+            color: #6f42c1;
+        }
+        .text-muted-italic {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .jo-number {
+            color: #20c997;
+        }
+        .total-requests-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        .pdf-dropdown {
+            min-width: 200px;
+            padding: 0.5rem 0;
+        }
+        .pdf-dropdown .dropdown-item {
+            padding: 0.5rem 1rem;
+            font-size: 0.9rem;
+        }
+        .pdf-dropdown .dropdown-item i {
+            width: 20px;
+            margin-right: 10px;
+        }
+        .pdf-dropdown .dropdown-item:hover {
+            background-color: #f8f9fa;
+        }
+        .pdf-dropdown-divider {
+            height: 1px;
+            margin: 0.5rem 0;
+            background-color: #e9ecef;
+        }
+        
+        /* Searchable dropdown styles */
+        .searchable-dropdown-container {
+            position: relative;
+            width: 100%;
+        }
+        .searchable-dropdown-input {
+            width: 100%;
+            padding: 1rem 0.75rem;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #212529;
+            background-color: #fff;
+            background-clip: padding-box;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+            height: calc(3.5rem + 2px);
+        }
+        .searchable-dropdown-input:focus {
+            color: #212529;
+            background-color: #fff;
+            border-color: #86b7fe;
+            outline: 0;
+            box-shadow: 0 0 0 0.25rem rgba(13,110,253,0.25);
+        }
+        .searchable-dropdown-list {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            max-height: 300px;
+            overflow-y: auto;
+            background-color: #fff;
+            border: 1px solid #ced4da;
+            border-radius: 0.375rem;
+            z-index: 1000;
+            display: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .searchable-dropdown-list.show {
+            display: block;
+        }
+        .searchable-dropdown-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        .searchable-dropdown-item:hover,
+        .searchable-dropdown-item.selected {
+            background-color: #e7f1ff;
+        }
+        .searchable-dropdown-item:last-child {
+            border-bottom: none;
+        }
+        .searchable-dropdown-item .item-code {
+            font-weight: 600;
+            color: #0d6efd;
+        }
+        .searchable-dropdown-item .item-name {
+            color: #212529;
+        }
+        .searchable-dropdown-item .item-category {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+        .searchable-dropdown-no-results {
+            padding: 0.5rem 1rem;
+            color: #6c757d;
+            font-style: italic;
+        }
+        /* Removed selected-item-info styles */

@@ -1,0 +1,81 @@
+/* upload_attendance-style.css
+ * Extracted from upload_attendance.php - inline <style> block(s).
+ */
+
+            .upload-area { border: 2px dashed #dee2e6; border-radius: 0.5rem; padding: 2rem; text-align: center; background-color: #f8f9fa; cursor: pointer; transition: all 0.3s; }
+            .upload-area:hover { border-color: #0d6efd; background-color: #e9ecef; }
+            .upload-area i { font-size: 3rem; color: #6c757d; }
+            .late-time { color: #dc3545; font-weight: bold; }
+            .over-time { color: #28a745; font-weight: bold; }
+            .check-in { color: #28a745; font-weight: bold; }
+            .check-out { color: #dc3545; font-weight: bold; }
+            .status-badge { display: inline-block; padding: 0.25rem 0.5rem; border-radius: 0.25rem; font-weight: 500; font-size: 0.875rem; }
+            .status-present { background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; }
+            .status-halfday { background-color: #fff3cd; color: #856404; border: 1px solid #ffeeba; }
+            .status-absent { background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; }
+            .modal-header { background-color: #f8f9fa; border-bottom: 2px solid #dee2e6; }
+            .modal-title { color: #333; font-weight: 600; }
+            .time-validation-error { border-color: #dc3545 !important; }
+            .time-validation-error:focus { border-color: #dc3545 !important; box-shadow: 0 0 0 0.25rem rgba(220, 53, 69, 0.25) !important; }
+            .validation-message { font-size: 0.875rem; margin-top: 0.25rem; display: none; }
+            .validation-message.show { display: block; }
+            .validation-success { border-color: #28a745 !important; }
+            .validation-success:focus { border-color: #28a745 !important; box-shadow: 0 0 0 0.25rem rgba(40, 167, 69, 0.25) !important; }
+            .action-buttons { white-space: nowrap; display: flex; gap: 4px; flex-wrap: nowrap; }
+            .action-buttons .btn { padding: 0.25rem 0.5rem; font-size: 0.875rem; flex: 0 0 auto; }
+            .calculation-info { font-size: 0.85rem; margin-top: 0.25rem; color: #6c757d; }
+            .status-column { text-align: center; }
+            .time-clear-btn { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); background: none; border: none; color: #dc3545; cursor: pointer; display: none; }
+            .time-clear-btn:hover { color: #dc3545; }
+            .time-input-wrapper { position: relative; }
+            .time-input-wrapper input { padding-right: 30px; }
+            .time-input-wrapper input:not(:placeholder-shown) ~ .time-clear-btn { display: block; }
+            .missing-employees-list { max-height: 300px; overflow-y: auto; text-align: left; margin-top: 10px; }
+            .missing-employees-list table { width: 100%; font-size: 0.9rem; }
+            .missing-employees-list th { background-color: #f8f9fa; position: sticky; top: 0; }
+            .time-range-validation-message { font-size: 0.8rem; margin-top: 0.25rem; }
+
+/* Searchable employee picker.
+ * The Employee fields are plain <select>s with one option per employee. The widget in
+ * assets/js/upload_attendance.js.php turns each into a text input that filters as you type,
+ * keeping the original <select> in the form (hidden) so the POST is unchanged. */
+.searchable-select { position: relative; }
+.searchable-select .searchable-select-input {
+    width: 100%;
+    padding: 0.375rem 0.75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.searchable-select .searchable-select-input:focus {
+    border-color: #86b7fe;
+    outline: 0;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+.searchable-select.is-invalid .searchable-select-input { border-color: #dc3545; }
+.searchable-select-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: 260px;
+    overflow-y: auto;
+    background-color: #fff;
+    border: 1px solid #ced4da;
+    border-radius: 0.375rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    z-index: 1055;
+    display: none;
+}
+.searchable-select-list.show { display: block; }
+.searchable-select-item { padding: 0.375rem 0.75rem; cursor: pointer; border-bottom: 1px solid #f0f0f0; }
+.searchable-select-item:last-child { border-bottom: none; }
+.searchable-select-item:hover,
+.searchable-select-item.active { background-color: #e7f1ff; }
+.searchable-select-empty { padding: 0.375rem 0.75rem; color: #6c757d; font-style: italic; }
+/* the original select stays in the form but out of sight */
+.searchable-select select { display: none !important; }

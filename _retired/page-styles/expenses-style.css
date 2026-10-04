@@ -1,0 +1,62 @@
+/* expenses-style.css
+ * Extracted from expenses.php - inline <style> block(s).
+ */
+
+            .btn-group .btn:last-child {
+                margin-right: 5px;
+            }
+            .summary-card {
+                transition: transform 0.2s;
+                border: none;
+                box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+            }
+            .summary-card:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+            }
+            .total-amount {
+                font-size: 1.5rem;
+                font-weight: bold;
+                color: #28a745;
+            }
+            .employee-badge {
+                background-color: #17a2b8;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 4px;
+                font-size: 0.85em;
+                margin-left: 5px;
+            }
+            .ceo-badge {
+                background-color: #6f42c1;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 4px;
+                font-size: 0.85em;
+                margin-left: 5px;
+            }
+            .person-name-badge {
+                background-color: #28a745;
+                color: white;
+                padding: 2px 8px;
+                border-radius: 4px;
+                font-size: 0.85em;
+                margin-left: 5px;
+            }
+            /* Style for radio group in one row */
+            .radio-group-row {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 20px;
+                align-items: center;
+                margin-top: 5px;
+            }
+            .radio-group-row .form-check {
+                margin-right: 15px;
+                margin-bottom: 0;
+            }
+            .cash-balance {
+                font-size: 1.2rem;
+                font-weight: bold;
+                color: #007bff;
+            }

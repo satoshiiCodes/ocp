@@ -1,0 +1,36 @@
+{
+  "page": "cash_on_hand",
+  "guard": "OCP_CASH_ON_HAND_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectLast": "page_data\\.php" },
+    { "block": [
+      "// Check for session messages to display with SweetAlert2. This runs before the",
+      "// actions file, because the actions set these and then redirect back here.",
+      "$swal_message = '';",
+      "$swal_message_type = '';",
+      "if (isset($_SESSION['swal_message'])) {",
+      "    $swal_message = $_SESSION['swal_message'];",
+      "    $swal_message_type = $_SESSION['swal_message_type'];",
+      "    unset($_SESSION['swal_message']);",
+      "    unset($_SESSION['swal_message_type']);",
+      "}",
+      "",
+      "// All of this page's actions live in one file: adding, editing and deleting a",
+      "// transaction. The forms post back to this page, so it is pulled in before",
+      "// anything is read or rendered.",
+      "if (!defined('OCP_CASH_ON_HAND_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/cash_on_hand-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. It also carries the",
+      "// signed-in user's name, which the side menu prints.",
+      "$ocp_endpoint = require __DIR__ . '/api/cash_on_hand-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [366, 793], "expectFirst": "^\\?>$" }
+  ]
+}

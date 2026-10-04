@@ -1,0 +1,25 @@
+{
+  "page": "dashboard",
+  "guard": "OCP_DASHBOARD_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 42], "expectFirst": "^<\\?php$", "expectLast": "^    \\}$" },
+    { "block": [
+      "",
+      "    // The dashboard has no actions of its own: it only reads. The actions file",
+      "    // exists so every page has one, matching the layout the rest of the app uses.",
+      "    if (!defined('OCP_DASHBOARD_ACTIONS_RAN')) {",
+      "        require __DIR__ . '/actions/dashboard-actions.php';",
+      "    }",
+      "",
+      "    // All of this page's fetching lives in one file: it returns the variables the",
+      "    // markup below needs, which are unpacked into this scope. The block is gated by",
+      "    // the role flags above, so each viewer gets only the panels they may see.",
+      "    $ocp_endpoint = require __DIR__ . '/api/dashboard-endpoint.php';",
+      "    foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "        ${$ocp_key} = $ocp_value;",
+      "    }",
+      "    unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [700, 1750], "expectFirst": "^\\?>$" }
+  ]
+}

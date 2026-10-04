@@ -1,0 +1,25 @@
+{
+  "page": "backup_sql",
+  "guard": "OCP_BACKUP_SQL_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 13], "expectLast": "db_config\\.php';" },
+    { "block": [
+      "// All of this page's actions live in one file: creating a backup, and setting or",
+      "// removing the automatic-backup schedule. Its helpers live there too, because",
+      "// the due-backup check is what performs a backup. The forms post back to this",
+      "// page, so it is pulled in before anything is read or rendered.",
+      "if (!defined('OCP_BACKUP_SQL_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/backup_sql-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope.",
+      "$ocp_endpoint = require __DIR__ . '/api/backup_sql-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [294, 427], "expectFirst": "^\\?>$" }
+  ]
+}

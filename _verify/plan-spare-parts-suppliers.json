@@ -1,0 +1,36 @@
+{
+  "page": "spare_parts_suppliers",
+  "guard": "OCP_SPARE_PARTS_SUPPLIERS_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 12], "expectLast": "page_data\\.php" },
+    { "block": [
+      "// $swal_data carries the message the actions file wants shown, and the form",
+      "// values for a retry. It is created here, before the actions run, so the markup",
+      "// below always finds it defined.",
+      "$message = '';",
+      "$message_type = ''; // success or danger",
+      "$swal_data = []; // For SweetAlert2 data",
+      "",
+      "// All of this page's actions live in one file: deleting, editing and adding a",
+      "// spare-parts supplier. The forms post back to this page, so it is pulled in",
+      "// before anything is read or rendered.",
+      "if (!defined('OCP_SPARE_PARTS_SUPPLIERS_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/spare_parts_suppliers-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. The two message",
+      "// entries are only taken when the endpoint actually set one, so a message the",
+      "// actions file produced is not wiped out.",
+      "$ocp_endpoint = require __DIR__ . '/api/spare_parts_suppliers-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    if (in_array($ocp_key, ['swal_data', 'message', 'message_type', 'error_message'], true) && empty($ocp_value)) {",
+      "        continue;",
+      "    }",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [208, 522], "expectFirst": "^\\?>$" }
+  ]
+}

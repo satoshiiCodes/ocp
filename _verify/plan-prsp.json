@@ -1,0 +1,28 @@
+{
+  "page": "purchase_request_spare_parts",
+  "guard": "OCP_PURCHASE_REQUEST_SPARE_PARTS_ACTIONS_RAN",
+  "steps": [
+    { "keep": [1, 10], "expectFirst": "^<\\?php$", "expectLast": "db_config\\.php';$" },
+    { "block": [
+      "",
+      "// All of this page's actions live in one file: creating a purchase request,",
+      "// updating one, changing its status, deleting it, and the document-number lookup",
+      "// its JavaScript makes. The forms post back to this page, so it is pulled in",
+      "// before anything is read or rendered.",
+      "if (!defined('OCP_PURCHASE_REQUEST_SPARE_PARTS_ACTIONS_RAN')) {",
+      "    require __DIR__ . '/actions/purchase_request_spare_parts-actions.php';",
+      "}",
+      "",
+      "// All of this page's fetching lives in one file: it returns the variables the",
+      "// markup below needs, which are unpacked into this scope. The same file answers",
+      "// the page's JavaScript when it asks for one request by ?id=, and it carries the",
+      "// shared helpers the markup uses below.",
+      "$ocp_endpoint = require __DIR__ . '/api/purchase_request_spare_parts-endpoint.php';",
+      "foreach ($ocp_endpoint as $ocp_key => $ocp_value) {",
+      "    ${$ocp_key} = $ocp_value;",
+      "}",
+      "unset($ocp_endpoint, $ocp_key, $ocp_value);"
+    ] },
+    { "keep": [491, 1337], "expectFirst": "^// Function to get status badge class$" }
+  ]
+}
